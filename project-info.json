@@ -1,0 +1,31 @@
+{
+    "project": "Laberinto WebApp",
+    "tech": [
+        "Python",
+        "Flask",
+        "Algorithm Logic"
+    ],
+    "features": [
+        "Automated Maze Generation",
+        "Real-time Maze Solving Algorithms",
+        "Web Interface for Visualization",
+        "Recursive Backtracking Implementation",
+        "Dynamic UX with Flask"
+    ],
+    "stack": {
+        "language": "Python",
+        "framework": "Flask",
+        "tools": [
+            "HTML5",
+            "CSS3",
+            "Jinja2",
+            "Canvas API"
+        ],
+        "database": "JSON Files (Local Persistence)"
+    },
+    "screenshots": [],
+    "description": {
+        "es": "Aplicación web que permite generar y resolver laberintos mediante diferentes algoritmos, desarrollada con Python y Flask.",
+        "en": "Web application that allows generating and solving mazes through different algorithms, developed with Python and Flask."
+    }
+}

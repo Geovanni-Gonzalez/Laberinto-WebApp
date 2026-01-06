@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laberinto WebApp v2.0</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <h1>Laberinto <span class="accent-text">AI</span></h1>
+                <p>Generación & Resolución</p>
+            </header>
+
+            <div class="control-group">
+                <h3><i class="ri-settings-3-line"></i> Configuración</h3>
+                <div class="input-row">
+                    <label>Ancho <input type="number" id="width" value="20" min="5" max="50"></label>
+                    <label>Alto <input type="number" id="height" value="20" min="5" max="50"></label>
+                </div>
+                <label class="block-label">Generador
+                    <select id="gen-algorithm">
+                        <option value="recursive_backtracking">Backtracking Recursivo</option>
+                        <option value="prims">Prim's (Orgánico)</option>
+                        <option value="cellular">Autómata Celular (Cueva)</option>
+                    </select>
+                </label>
+                <button id="btn-generate" class="btn primary full-width">Generar Laberinto</button>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="ri-play-circle-line"></i> Resolución</h3>
+                <label class="block-label">Algoritmo
+                    <select id="algorithm">
+                        <option value="brute_force">Fuerza Bruta (DFS)</option>
+                        <option value="optimized">Optimizado (A*)</option>
+                    </select>
+                </label>
+                <label class="block-label">Velocidad (ms) <input type="range" id="speed" value="50" min="1" max="500"
+                        oninput="this.nextElementSibling.value = this.value"> <output>50</output></label>
+                <button id="btn-solve" class="btn accent full-width">Resolver</button>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="ri-brain-line"></i> IA (Q-Learning)</h3>
+                <div class="input-row">
+                    <label>Episodios <input type="number" id="episodes" value="100" min="1"></label>
+                </div>
+                <button id="btn-train" class="btn purple full-width">Entrenar Agente</button>
+            </div>
+
+            <div class="control-group">
+                <h3><i class="ri-save-3-line"></i> Persistencia</h3>
+                <div class="btn-row">
+                    <button id="btn-save" class="btn secondary">Guardar</button>
+                    <button id="btn-load" class="btn secondary">Cargar</button>
+                </div>
+                <input type="file" id="file-input" style="display: none;" accept=".json">
+            </div>
+
+            <div class="control-group">
+                <button id="btn-toggle-3d" class="btn outline full-width">Vista 3D (BETA)</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="canvas-wrapper">
+                <canvas id="mazeCanvas"></canvas>
+                <div id="status" class="status-bar">Listo para generar.</div>
+            </div>
+
+            <div class="legend">
+                <span class="badged wall">Pared</span>
+                <span class="badged path">Camino</span>
+                <span class="badged start">Inicio</span>
+                <span class="badged end">Fin</span>
+                <span class="badged visited">Visitado</span>
+                <span class="badged solution">Solución</span>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
