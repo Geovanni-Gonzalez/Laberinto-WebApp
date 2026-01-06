@@ -10,8 +10,12 @@
         "Real-time Maze Solving Algorithms",
         "Web Interface for Visualization",
         "Recursive Backtracking Implementation",
-        "Dynamic UX with Flask"
+        "Dynamic UX with Flask",
+        "3D Visualization (Three.js)",
+        "AI Agent (Q-Learning)",
+        "Advanced Generation (Prim's, Cellular Automata)"
     ],
+    "version": "2.0.0",
     "stack": {
         "language": "Python",
         "framework": "Flask",

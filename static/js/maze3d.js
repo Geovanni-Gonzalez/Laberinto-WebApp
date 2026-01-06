@@ -21,6 +21,7 @@ export function init3D(mazeData) {
         while (scene.children.length > 0) {
             scene.remove(scene.children[0]);
         }
+        pathGroup = null; // Reset path group reference
     } else {
         // Init scene
         scene = new THREE.Scene();
@@ -44,8 +45,17 @@ export function init3D(mazeData) {
             document.body.requestPointerLock();
         });
 
+        // Resize Handler
+        window.addEventListener('resize', onWindowResize);
+
+        // Resize Handler
+        window.addEventListener('resize', onWindowResize);
+
         animate();
     }
+
+    // Always resize to ensure fit
+    onWindowResize();
 
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
@@ -189,3 +199,59 @@ document.addEventListener('mousemove', (event) => {
         camera.rotation.x = Math.max(- Math.PI / 2, Math.min(Math.PI / 2, camera.rotation.x));
     }
 });
+
+function onWindowResize() {
+    if (!renderer || !camera) return;
+
+    const canvasContainer = document.querySelector('.canvas-wrapper');
+    if (!canvasContainer) return;
+
+    const width = canvasContainer.clientWidth - 20; // Padding
+    const height = canvasContainer.clientHeight - 20;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+}
+
+// Path Visualization
+let pathGroup;
+
+export function renderPath(coords, type) {
+    if (!scene) return;
+
+    if (!pathGroup) {
+        pathGroup = new THREE.Group();
+        scene.add(pathGroup);
+    }
+
+    const sphereGeometry = new THREE.SphereGeometry(0.2, 8, 8);
+    const materials = {
+        'solution': new THREE.MeshBasicMaterial({ color: 0xffff00 }),
+        'visited': new THREE.MeshBasicMaterial({ color: 0x00bcd4 }),
+        'agent': new THREE.MeshBasicMaterial({ color: 0x9c27b0 })
+    };
+
+    export function renderPath(coords, type) {
+        if (!scene) return;
+
+        if (!pathGroup) {
+            pathGroup = new THREE.Group();
+            scene.add(pathGroup);
+        }
+
+        const material = materials[type] || materials['solution'];
+
+        coords.forEach(([x, y]) => {
+            const mesh = new THREE.Mesh(sphereGeometry, material);
+            mesh.position.set(x + 0.5, 0.5, y + 0.5);
+            pathGroup.add(mesh);
+        });
+    }
+
+    export function clearPaths() {
+        if (pathGroup) {
+            scene.remove(pathGroup);
+            pathGroup = null;
+        }
+    }

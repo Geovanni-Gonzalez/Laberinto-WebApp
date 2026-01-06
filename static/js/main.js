@@ -1,4 +1,4 @@
-import { init3D, toggle3D } from './maze3d.js';
+import { init3D, toggle3D, renderPath, clearPaths } from './maze3d.js';
 
 const canvas = document.getElementById('mazeCanvas');
 const ctx = canvas.getContext('2d');
@@ -124,21 +124,6 @@ function drawMaze(maze, visited = [], solution = [], isAI = false) {
     }
 }
 
-async function animateSolution(visited, solution, delay) {
-    isAnimating = true;
-
-    // Animate visited
-    for (let i = 0; i < visited.length; i++) {
-        drawMaze(currentMaze, visited.slice(0, i + 1), []);
-        await new Promise(r => setTimeout(r, delay));
-    }
-
-    // Animate solution path
-    // We can draw it all at once or animate. Let's just draw it.
-    drawMaze(currentMaze, visited, solution);
-
-    isAnimating = false;
-}
 
 function handleCanvasClick(e) {
     if (!currentMaze || isAnimating) return;
@@ -186,4 +171,67 @@ function loadMaze(event) {
         }
     };
     reader.readAsText(file);
+}
+
+document.getElementById('btn-train').addEventListener('click', trainAgent);
+
+async function trainAgent() {
+    if (!currentMaze || isAnimating) return;
+    const episodes = document.getElementById('episodes').value;
+    setStatus(`Entrenando IA (${episodes} episodios)...`);
+
+    try {
+        const res = await fetch('/api/train', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ episodes: parseInt(episodes) })
+        });
+        const data = await res.json();
+
+        if (data.status === 'ok') {
+            setStatus("Entrenamiento completado. Visualizando última ruta...");
+            const speed = parseInt(document.getElementById('speed').value);
+            // Visualize with isAI=true flag
+            await animateSolution(data.trace, [], speed, true);
+            setStatus(`IA Entrenada por ${data.episodes_run} episodios.`);
+        }
+    } catch (e) {
+        console.error(e);
+        setStatus("Error entrenando IA.");
+    }
+}
+
+async function animateSolution(visited, solution, delay, isAI = false) {
+    isAnimating = true;
+
+    // Clear previous 3D paths if any
+    if (is3DActive) clearPaths();
+
+    // Animate visited
+    for (let i = 0; i < visited.length; i++) {
+        drawMaze(currentMaze, visited.slice(0, i + 1), [], isAI);
+
+        // Real-time 3D update
+        if (is3DActive) {
+            renderPath([visited[i]], isAI ? 'agent' : 'visited');
+        }
+
+        await new Promise(r => setTimeout(r, delay));
+    }
+
+    if (!isAI) {
+        // Animate solution path 2D
+        drawMaze(currentMaze, visited, solution);
+
+        // Animate solution path 3D
+        if (is3DActive) {
+            for (let i = 0; i < solution.length; i++) {
+                renderPath([solution[i]], 'solution');
+                // Small extra delay for dramatic effect in 3D
+                await new Promise(r => setTimeout(r, 20));
+            }
+        }
+    }
+
+    isAnimating = false;
 }

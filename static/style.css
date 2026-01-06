@@ -237,6 +237,14 @@ input[type=range] {
     background: #000;
     border-radius: 8px;
     border: 1px solid #333;
+    width: 90%;
+    max-width: 1000px;
+    min-height: 600px;
+    /* Force a larger viewing area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 canvas {
