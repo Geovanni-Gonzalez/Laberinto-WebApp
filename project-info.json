@@ -1,35 +1,56 @@
 {
-    "project": "Laberinto WebApp",
-    "tech": [
-        "Python",
-        "Flask",
-        "Algorithm Logic"
-    ],
-    "features": [
-        "Automated Maze Generation",
-        "Real-time Maze Solving Algorithms",
-        "Web Interface for Visualization",
-        "Recursive Backtracking Implementation",
-        "Dynamic UX with Flask",
-        "3D Visualization (Three.js)",
-        "AI Agent (Q-Learning)",
-        "Advanced Generation (Prim's, Cellular Automata)"
-    ],
-    "version": "2.0.0",
-    "stack": {
-        "language": "Python",
-        "framework": "Flask",
-        "tools": [
-            "HTML5",
-            "CSS3",
-            "Jinja2",
-            "Canvas API"
+    "en": {
+        "tech": [
+            "Python (Flask)",
+            "Three.js (3D Rendering)",
+            "Q-Learning (AI)",
+            "Breadth-First Search (BFS)"
         ],
-        "database": "JSON Files (Local Persistence)"
+        "features": [
+            "Automated maze generation using Prim's algorithm",
+            "Real-time 3D visualization with Three.js",
+            "AI Agent trained with Q-Learning to solve mazes",
+            "Multiple generation strategies (Cellular Automata, Backtracking)",
+            "Live visualization of pathfinding algorithms"
+        ],
+        "stack": {
+            "language": "Python / JavaScript",
+            "framework": "Flask",
+            "tools": [
+                "Three.js",
+                "Canvas API",
+                "NumPy"
+            ],
+            "database": "Local JSON Storage"
+        },
+        "screenshots": [],
+        "description": "A high-fidelity web laboratory exploring the intersection of procedural generation, 3D graphics, and reinforcement learning. This platform generates intricate labyrinths using advanced algorithms like Prim's and Recursive Backtracking, then brings them to life in a fully navigable 3D world built with Three.js. The centerpiece is an AI agent that learns to navigate these mazes using Q-Learning, allowing users to watch the agent develop its tactical capability from scratch in real-time."
     },
-    "screenshots": [],
-    "description": {
-        "es": "Aplicación web que permite generar y resolver laberintos mediante diferentes algoritmos, desarrollada con Python y Flask.",
-        "en": "Web application that allows generating and solving mazes through different algorithms, developed with Python and Flask."
+    "es": {
+        "tech": [
+            "Python (Flask)",
+            "Three.js (Renderizado 3D)",
+            "Q-Learning (IA)",
+            "Breadth-First Search (BFS)"
+        ],
+        "features": [
+            "Generación automática de laberintos mediante el algoritmo de Prim",
+            "Visualización 3D en tiempo real con Three.js",
+            "Agente de IA entrenado con Q-Learning para resolver laberintos",
+            "Múltiples estrategias de generación (Autómatas Celulares, Backtracking)",
+            "Visualización en vivo de algoritmos de búsqueda de rutas"
+        ],
+        "stack": {
+            "language": "Python / JavaScript",
+            "framework": "Flask",
+            "tools": [
+                "Three.js",
+                "Canvas API",
+                "NumPy"
+            ],
+            "database": "Almacenamiento JSON Local"
+        },
+        "screenshots": [],
+        "description": "Un laboratorio web de alta fidelidad que explora la intersección de la generación procedimental, los gráficos 3D y el aprendizaje por refuerzo. Esta plataforma genera laberintos intrincados utilizando algoritmos avanzados, para luego darles vida en un mundo 3D completamente navegable construido con Three.js. El componente central es un agente de IA que aprende a navegar estos laberintos mediante Q-Learning, permitiendo a los usuarios observar cómo el agente desarrolla su capacidad táctica desde cero en tiempo real."
     }
 }
