@@ -1,65 +1,76 @@
-# Laberinto WebApp v2.0 🚀
+﻿# Laberinto WebApp
 
-Una aplicación web profesional para la generación, resolución y visualización de laberintos, potenciada con **Inteligencia Artificial** y **Gráficos 3D**.
+## Descripción
+Aplicación web con Flask y JavaScript para generar, visualizar y resolver laberintos, con lógica de generación, solución e IA.
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![Python](https://img.shields.io/badge/Python-3.x-yellow.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+## Objetivo
+Explorar algoritmos de generación de laberintos, búsqueda de rutas y visualización interactiva.
 
-## ✨ Características Principales
+## Tecnologías utilizadas
+- Python
+- Flask
+- JavaScript
+- Three.js
+- HTML/CSS
+- NumPy
 
-### 🧠 Generación Avanzada
+## Funcionalidades principales
+- Generación de laberintos
+- Resolución con búsqueda
+- Agente IA
+- Visualización Canvas/Three.js
+- Backend Flask
 
-- **Backtracking Recursivo**: Pasillos largos y perfectos.
-- **Algoritmo de Prim**: Laberintos orgánicos y fractales.
-- **Autómata Celular**: Estructuras tipo cueva/mapa RPG.
+## Mi rol
+Implementé lógica de laberintos, backend Flask e interfaz web.
 
-### 🎮 Visualización Inmersiva
+## Aprendizajes clave
+- Algoritmos de grafos
+- Renderizado interactivo
+- Flask templates/static
+- Separación lógica/presentación
 
-- **Vista 2D (Canvas)**: Renderizado rápido y limpio.
-- **Vista 3D (Three.js)**: Explora tu laberinto en primera persona con controles FPS (WASD + Mouse).
-- **Interfaz Moderna**: Diseño "Cyberpunk" con barra lateral y tema oscuro.
+## Instalación y ejecución
+```bash
+cd Laberinto-WebApp
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+```
 
-### 🤖 Inteligencia Artificial
+## Estructura del proyecto
+- app.py: servidor
+- logic/: algoritmos
+- templates/: vista
+- static/: JS/CSS
+- DOCUMENTACION.md: soporte
 
-- **Agente Q-Learning**: Entrena una IA en tiempo real para que aprenda a resolver cualquier mapa por sí misma.
-- **Visualización de Aprendizaje**: Observa la ruta lógica (púrpura) que el agente deduce tras su entrenamiento.
+## Capturas o demo
+![Captura principal](screenshots/principalImage.png)
 
-### ⚡ Resolución Clásica
+## Estado del proyecto
+Proyecto académico funcional.
 
-- **DFS (Fuerza Bruta)**: Búsqueda en profundidad.
-- **A* (Optimizado)**: Búsqueda heurística inteligente (Manhattan).
+## Valor técnico demostrado
+Demuestra algoritmos, visualización web y separación de capas.
 
-## 🛠️ Instalación y Uso
+## Mejoras futuras
+- Agregar pruebas
+- Documentar parámetros
+- Publicar demo
 
-1. **Clonar repositorio**:
+## Autor
+Geovanni González  
+Estudiante de Ingeniería en Computación  
+GitHub: [Geovanni-Gonzalez](https://github.com/Geovanni-Gonzalez)
 
-    ```bash
-    git clone https://github.com/tu-usuario/Laberinto-WebApp.git
-    cd Laberinto-WebApp
-    ```
 
-2. **Instalar dependencias**:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
 
-3. **Ejecutar**:
 
-    ```bash
-    python app.py
-    ```
 
-4. **Abrir**: Navega a `http://localhost:5000`
 
-## 📂 Estructura del Proyecto
 
-- `app.py`: Backend Flask (API).
-- `logic/`: Núcleo algorítmico (Generadores, Solvers, IA).
-- `static/`: Frontend (JS modular, Three.js, CSS).
-- `templates/`: HTML5.
 
-## 🤝 Créditos
 
-Desarrollado como proyecto educativo de algoritmia y sistemas inteligentes.
