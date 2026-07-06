@@ -1,5 +1,7 @@
 ﻿# Laberinto WebApp
 
+[![CI](https://github.com/Geovanni-Gonzalez/Laberinto-WebApp/actions/workflows/ci.yml/badge.svg)](https://github.com/Geovanni-Gonzalez/Laberinto-WebApp/actions/workflows/ci.yml)
+
 ## Descripción
 Aplicación web con Flask y JavaScript para generar, visualizar y resolver laberintos, con lógica de generación, solución e IA.
 
