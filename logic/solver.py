@@ -38,14 +38,10 @@ class MazeSolver:
             visited.add((cx, cy))
             visited_order.append((cx, cy))
 
-            # Neighbors: Up, Down, Left, Right
-            # Check 1 step distance (maze grid path is 0)
-            # Actually, standard maze usually has walls.
-            # Generator logic: 0 is path, 1 is wall.
-            
+            # Vecinos ortogonales (arriba, abajo, izquierda, derecha).
+            # Convención del generador: 0 = camino, 1 = pared.
             directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-            # Brute force: No specific order, or fixed order
-            
+
             for dx, dy in directions:
                 nx, ny = cx + dx, cy + dy
                 if 0 <= nx < self.width and 0 <= ny < self.height:

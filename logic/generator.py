@@ -83,8 +83,7 @@ class MazeGenerator:
             wx, wy = cx + dx, cy + dy
             if 0 < wx < maze.width - 1 and 0 < wy < maze.height - 1:
                 if maze.get_cell(wx, wy) == 1:
-                    # Check if it's not a border (simplification)
-                    # Actually we just add it, check validity later
+                    # Se agrega la pared; la validez se verifica al procesarla.
                     walls.append((wx, wy, cx, cy))
 
     def _cellular_automata(self, maze, iterations=5):
